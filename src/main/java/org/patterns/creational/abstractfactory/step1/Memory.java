@@ -1,6 +1,6 @@
-package org.patterns.creational.abstractfactory.initial;
+package org.patterns.creational.abstractfactory.step1;
 
-public class MemoryA {
+public abstract class Memory {
 
     @Override
     public String toString() {

@@ -6,26 +6,23 @@ public class Application {
 
         Application app = new Application();
 
-        ComputerA computerA = app.createComputerA();
-        ComputerB computerB = app.createComputerB();
+        ComputerA computerA = new ComputerA();
+        app.createComputer(computerA);
+        System.out.println(computerA);
 
-
+        ComputerB computerB = new ComputerB();
+        app.createComputer(computerB);
+        System.out.println(computerB);
     }
 
-    public ComputerA createComputerA(){
-        ComputerA computerA = new ComputerA();
+    public void createComputer(ComputerA computerA){
         computerA.setMemory(new MemoryA());
         computerA.setCPU(new CPUA());
-
-        return computerA;
     }
 
-    public ComputerB createComputerB(){
-        ComputerB computerB = new ComputerB();
+    public void createComputer(ComputerB computerB){
         computerB.setMemory(new MemoryB());
         computerB.setCPU(new CPUB());
-
-        return computerB;
     }
 
 }

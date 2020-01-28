@@ -4,10 +4,18 @@ public class ComputerA {
     private MemoryA memoryA;
     private CPUA cpua;
     public void setMemory(MemoryA memoryA) {
-        memoryA = memoryA;
+        this.memoryA = memoryA;
     }
 
     public void setCPU(CPUA cpua) {
         this.cpua = cpua;
+    }
+
+    @Override
+    public String toString() {
+        return "ComputerA{" +
+                "memoryA=" + memoryA +
+                ", cpua=" + cpua +
+                '}';
     }
 }

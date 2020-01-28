@@ -10,4 +10,12 @@ public class ComputerB {
     public void setCPU(CPUB cpub) {
         this.cpub = cpub;
     }
+
+    @Override
+    public String toString() {
+        return "ComputerB{" +
+                "memoryB=" + memoryB +
+                ", cpub=" + cpub +
+                '}';
+    }
 }
