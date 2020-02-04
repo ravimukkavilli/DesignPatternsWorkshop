@@ -1,6 +1,6 @@
-package org.patterns.structural.composite.initial;
+package org.patterns.structural.composite.completed;
 
-public class AppCompositeInitial {
+public class AppCompositeCompleted {
 
     public static void main(String[] args) {
         Board board = new Board();
@@ -17,13 +17,16 @@ public class AppCompositeInitial {
 
         System.out.println(board.getNoOfComponents());
 
+        System.out.println("Board Triggered..");
+        board.trigger();
+
         for(int i = 0;i < board.getNoOfComponents(); i++){
             Gate gateAtLocation = board.getGateAt(i);
             System.out.println(gateAtLocation);
-            // violates LSP and OC
-            if(gateAtLocation instanceof FlipFlop){
-                FlipFlop flipFlop = (FlipFlop) gateAtLocation;
-                System.out.println(String.format("Component contains: "+ flipFlop.getNoOfComponents()));
+            int count = gateAtLocation.getNoOfComponents();
+
+            if(count > 0){
+                System.out.println(String.format("contains: "+ gateAtLocation.getNoOfComponents()+" components"));
             }
         }
 
@@ -31,16 +34,7 @@ public class AppCompositeInitial {
 
     private static void addAComponentToAFlipFlop(Board board, int location, Gate gate) {
         Gate gateAtLocation = board.getGateAt(location);
-        // violates LSP and OC
-        // because the code that is using the base class "Gate" is required to know the what kind of derived
-        // class "FlipFlop" it is.
-        if(gateAtLocation instanceof FlipFlop){
-           FlipFlop flipFlop = (FlipFlop) gateAtLocation;
-           flipFlop.add(gate);
-        } else {
-            throw new RuntimeException("Can't add Gate to the component.");
-        }
-
+        gateAtLocation.add(gate);
     }
 
 
