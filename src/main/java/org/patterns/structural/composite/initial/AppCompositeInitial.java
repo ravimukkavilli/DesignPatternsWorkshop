@@ -10,6 +10,7 @@ public class AppCompositeInitial {
         board.add(new ANDGate());
         board.add(new FlipFlop());
 
+        // what happens if we introduce yet another gate like XOR
 
         addAComponentToAFlipFlop(board, 3, new ANDGate());
         addAComponentToAFlipFlop(board, 3, new ORGate());
@@ -19,6 +20,7 @@ public class AppCompositeInitial {
         for(int i = 0;i < board.getNoOfComponents(); i++){
             Gate gateAtLocation = board.getGateAt(i);
             System.out.println(gateAtLocation);
+            // violates LSP and OC
             if(gateAtLocation instanceof FlipFlop){
                 FlipFlop flipFlop = (FlipFlop) gateAtLocation;
                 System.out.println(String.format("Component contains: "+ flipFlop.getNoOfComponents()));
@@ -29,7 +31,7 @@ public class AppCompositeInitial {
 
     private static void addAComponentToAFlipFlop(Board board, int location, Gate gate) {
         Gate gateAtLocation = board.getGateAt(location);
-
+        // violates LSP and OC
         if(gateAtLocation instanceof FlipFlop){
            FlipFlop flipFlop = (FlipFlop) gateAtLocation;
            flipFlop.add(gate);
